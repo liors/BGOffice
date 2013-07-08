@@ -9,16 +9,20 @@ function FormCtrl($scope, $element, $http) {
 	$scope.submit = function() {
         var url = "https://billguard.com/office-visitors?"+$element.serialize()+"&callback=JSON_CALLBACK";
         $http.jsonp(url).success(function(data){
-			if (data.status === 'OK') {
-        		window.bootbox.alert("Thanks!");
-        		$scope.firstName = "";
-        		$scope.lastName = "";
-        		$scope.company = "";
-        		$scope.visiting = "";
+        	if (data.status === 'OK') {
+				resetForm();
+        		window.bootbox.alert("Thanks!");        		
 			} else {
 				window.alert("Oops something went wrong...");
 			}
-       });
+       });   
+  	};
+
+  	function resetForm() {
+    	$scope.firstName = "";
+		$scope.lastName = "";
+		$scope.company = "";
+		$scope.visiting = "";
+    };
 	
-  };
 }
