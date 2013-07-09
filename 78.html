@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html ng-app >
+<html ng-app="app">
 <head>
     <title>BillGuard TLV Office</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
@@ -83,9 +83,11 @@
              <!-- Visiting -->
             <div class="control-group">
               <label class="control-label" for="visiting">Visiting</label>
-              <div class="controls">
-                <input type="text" id="visiting" name="visiting" placeholder="" class="input-xlarge" ng-model="visiting" required>
-              </div>
+                  <div class="controls">
+                    <select ng-model="visiting" ng-options="e.name for e in employees">
+                      <option value="">-- who are you visiting? --</option>
+                    </select>                    
+                  </div>
             </div>
        
             <!-- Submit -->
@@ -107,9 +109,9 @@
   <div class="container dark">
     <h1>Meet the team</h1>
       <ul class="thumbnails">
-        <li class="span3" ng-repeat="user in users">
+        <li class="span4" ng-repeat="user in users">
           <div class="thumbnail">
-                <img alt="" src="assets/img/{{user.img}}.png">
+                <img alt="" src="assets/img/{{user.img}}.jpg">
                 <h3>{{user.name}}</h3>
                 <p>{{user.job}}</p>
                 <div class="social">
