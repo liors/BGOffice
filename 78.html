@@ -59,7 +59,7 @@
             <div class="control-group">
               <label class="control-label" for="first-name">First Name</label>
               <div class="controls">
-                <input type="text" id="first-name" name="first-name" placeholder="" class="input-xlarge" ng-model="firstName" required>
+                <input type="text" id="first-name" name="first-name" placeholder="" class="input-xlarge" ng-model="obj.firstName" required>
                 <span class="error" ng-show="myForm.input.$error.required">Required!</span><br>
               </div>
             </div>
@@ -68,7 +68,7 @@
             <div class="control-group">
               <label class="control-label" for="last-name">Last Name</label>
               <div class="controls">
-                <input type="text" id="last-name" name="last-name" placeholder="" class="input-xlarge" ng-model="lastName" required>
+                <input type="text" id="last-name" name="last-name" placeholder="" class="input-xlarge" ng-model="obj.lastName" required>
               </div>
             </div>
        
@@ -76,7 +76,7 @@
             <div class="control-group">
               <label class="control-label" for="company">Company</label>
               <div class="controls">
-                <input type="text" id="company" name="company" placeholder="" class="input-xlarge" ng-model="company" required>
+                <input type="text" id="company" name="company" placeholder="" class="input-xlarge" ng-model="obj.company" required>
               </div>
             </div>
 
@@ -84,7 +84,7 @@
             <div class="control-group">
               <label class="control-label" for="visiting">Visiting</label>
                   <div class="controls">
-                    <select ng-model="visiting" ng-options="e.name for e in employees">
+                    <select id="visiting" name="visiting" ng-model="obj.visiting" ng-options="e.name for e in employees">
                       <option value="">-- who are you visiting? --</option>
                     </select>                    
                   </div>

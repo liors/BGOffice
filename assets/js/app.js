@@ -15,7 +15,7 @@ appModule.factory('service', function() {
                 { "name" : "Yoni Levy", "job": "Software Engineer", "img" : "yoni"},
                 { "name" : "Noam Nelke", "job": "Analyst and backoffice developer", "img" : "noam"},
                 { "name" : "Dan Peguine", "job": "Director of Product Marketing", "img" : "dan"},
-                { "name" : "Danna Raz", "job": "Head of HR & Operations", "img" : "dan"},
+                { "name" : "Danna Raz", "job": "Head of HR & Operations", "img" : "danna"},
                 { "name" : "Elad Mallel", "job": "BillGuard Resolve Tech Lead", "img" : "elad"},
                 { "name" : "Limor Manyevich", "job": "Interactive Designer", "img" : "limor"},
                 { "name" : "Hilla Peled Kalo", "job": "Data Science", "img" : "hilla"},
@@ -56,7 +56,8 @@ function TeamCtrl($scope, service) {
 function FormCtrl($scope, $element, $http, service) {
     $scope.employees = service.employees.data;
     $scope.submit = function() {
-        var url = "https://billguard.com/office-visitors?"+$element.serialize()+"&callback=JSON_CALLBACK";
+        $scope.obj.visiting = $scope.obj.visiting.name;
+        var url = "https://billguard.com/office-visitors?"+decodeURIComponent($.param($scope.obj))+"&callback=JSON_CALLBACK";
         $http.jsonp(url).success(function(data){
             if (data.status === 'OK') {
                 resetForm();
