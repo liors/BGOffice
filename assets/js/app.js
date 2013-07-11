@@ -74,9 +74,9 @@ function FormCtrl($scope, $element, $http, service) {
     };
 
     function resetForm() {
-        $scope.firstName = "";
-        $scope.lastName = "";
-        $scope.company = "";
+        $scope.obj.firstName = "";
+        $scope.obj.lastName = "";
+        $scope.obj.company = "";
     };
     
 }
