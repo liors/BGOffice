@@ -57,7 +57,12 @@ function FormCtrl($scope, $element, $http, service) {
     $scope.employees = service.employees.data;
     $scope.submit = function() {
         $scope.obj.visiting = $scope.obj.visiting.name;
-        var url = "https://billguard.com/office-visitors?"+decodeURIComponent($.param($scope.obj))+"&callback=JSON_CALLBACK";
+        var obj = $scope.obj;
+        obj["first-name"] = obj.firstName;
+        obj["last-name"] = obj.lastName;
+        delete obj.firstName;
+        delete obj.lastName;
+        var url = "https://billguard.com/office-visitors?"+decodeURIComponent($.param(obj))+"&callback=JSON_CALLBACK";
         $http.jsonp(url).success(function(data){
             if (data.status === 'OK') {
                 resetForm();
@@ -72,7 +77,6 @@ function FormCtrl($scope, $element, $http, service) {
         $scope.firstName = "";
         $scope.lastName = "";
         $scope.company = "";
-        $scope.visiting = "";
     };
     
 }
